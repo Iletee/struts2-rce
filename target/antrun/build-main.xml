@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="/Users/ilkkaturunen/git/struts2-rce/target/struts2-rest-showcase/WEB-INF/src/java" failonerror="false">
+    <fileset dir="/Users/ilkkaturunen/git/struts2-rce/src/main/java"/>
+  </copy>
+  <copy todir="/Users/ilkkaturunen/git/struts2-rce/target/struts2-rest-showcase/WEB-INF/src/java" failonerror="false">
+    <fileset dir="/Users/ilkkaturunen/git/struts2-rce/src/main/resources"/>
+  </copy>
+</target>
+</project>
