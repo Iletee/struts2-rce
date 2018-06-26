@@ -15,6 +15,13 @@ To begin testing RCE - run the exploit.py file.
 
 1. python exploit.py http://myserver:8080/orders/3 "CMD" 
 
+Try with different CMDs like
+pwd - where are we?
+whomai - what user are we running this?
+ls -la - what's in my directory?
+ls / - what's my machine
+ls /etc - what else we can find?
+
 
 
 
