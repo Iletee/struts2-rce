@@ -13,7 +13,7 @@ Pre-requisites: have python, docker, maven and a jdk installed
 
 To begin testing RCE - run the exploit.py file. 
 
-1. python exploit.py http://myserver:8080 "CMD" 
+1. python exploit.py http://myserver:8080/orders/3 "CMD" 
 
 
 
