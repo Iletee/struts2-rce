@@ -7,7 +7,7 @@ Pre-requisites: have python, docker, maven and a jdk installed
 
 1. clone this repo
 1. run mvn clean package in project root
-1. run docker build -t hack .
+1. run docker build -t hack \.
 1. run docker run -d -p 8080:8080 hack
 1. once container comes online - verify by running in browser
 
