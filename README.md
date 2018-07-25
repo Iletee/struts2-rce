@@ -1,4 +1,5 @@
 ## Exploit Demo for CVE-2017-5638
+[![DepShield Badge](https://bo8007mvmg.execute-api.us-west-1.amazonaws.com/prod/badges/Iletee/struts2-rce/depshield.svg)](https://sonatype.github.io/depshield-github-pages)
 
 Completely based on https://github.com/piesecurity/apache-struts2-CVE-2017-5638
 
