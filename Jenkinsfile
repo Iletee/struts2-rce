@@ -12,7 +12,7 @@ node () {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = tool 'M3'
+      // mvnHome = tool 'M3'
       
       // sh 'git rev-parse HEAD > commit'
       // commitId = readFile('commit').trim()
@@ -23,9 +23,9 @@ node () {
       // Run the maven build
       try{
         if (isUnix()) {
-           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore -f pom.xml clean package install -U"
+           sh "./mvnw  -B -Dmaven.test.failure.ignore -Drat.skip=true -f pom.xml clean package -U"
         } else {
-           bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+           bat(/mvnw.cmd -B -Dmaven.test.failure.ignore -Drat.skip=true clean package/)
         }
         
         currentBuild.result = 'SUCCESS'
