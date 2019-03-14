@@ -23,9 +23,15 @@ Try with different CMDs like
 * ls / - what's my machine
 * ls /etc - what else we can find?
 
+## How to Fix!
+Use the Nexus Lifecycle Component Information Panel to identify a non-vulnerable version of struts2-core. 
+Update the POM to that version and rebuild.You can also rebuild the docker image and run it to retry the attack.
+
+Also, look in the Issues here to see DepShield findings
 
 
-
+### Original readme
+===========================================================================
 README.txt - Rest Showcase Webapp
 
 Rest Showcase is a simple example of REST app build with the REST plugin.
