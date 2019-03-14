@@ -1,0 +1,9 @@
+/target/
+/.apt_generated/
+.settings/
+.vscode/
+.factorypath
+.project
+.sonatype
+.classpath
+.DS_Store
