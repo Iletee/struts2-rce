@@ -1,4 +1,10 @@
-/target/
+/target/antrun/
+/target/classes/
+/target/generated-*/
+/target/maven-*/
+/target/struts2*/
+/target/test-classes/
+.plxarc
 /.apt_generated/
 .settings/
 .vscode/
