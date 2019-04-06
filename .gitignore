@@ -13,3 +13,4 @@
 .sonatype
 .classpath
 .DS_Store
+/target/
