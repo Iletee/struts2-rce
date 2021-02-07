@@ -1,4 +1,4 @@
-FROM tomcat:7
+FROM tomcat:7.0.91
 MAINTAINER piesecurity <admin@pie-secure.org>
 ENV ADMIN_USER="mark"
 ENV PG_VERSION 9.3.4
