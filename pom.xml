@@ -31,18 +31,17 @@
 
     <artifactId>struts2-rest-showcase</artifactId>
     <packaging>war</packaging>
-    <version>2.5.10</version>
     <name>Struts 2 Rest Showcase Webapp</name>
     <description>Struts 2 Rest Showcase Example</description>
 
     <distributionManagement>
        <snapshotRepository>
     <id>nexus</id>
-    <url>http://18.188.100.16:8081/repository/maven-snapshots/</url>
+    <url>http://localhost:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
      <repository>
     <id>nexus</id>
-    <url>http://18.188.100.16:8081/repository/maven-releases/</url>
+    <url>http://localhost:8081/repository/maven-releases/</url>
     </repository>
     </distributionManagement>
 
@@ -59,6 +58,11 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-config-browser-plugin</artifactId>
         </dependency>
+        <dependency>
+        <groupId>com.lowagie</groupId>
+        <artifactId>itext</artifactId>
+        <version>4.2.2</version>
+    </dependency>
 
         <!-- Logging -->
         <dependency>

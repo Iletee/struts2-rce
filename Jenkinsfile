@@ -12,7 +12,7 @@ node () {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = tool 'M3'
+      // mvnHome = tool 'M3'
       
       // sh 'git rev-parse HEAD > commit'
       // commitId = readFile('commit').trim()
@@ -23,9 +23,9 @@ node () {
       // Run the maven build
       try{
         if (isUnix()) {
-           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore -f pom.xml -s /home/ubuntu/settings.xml clean package deploy -U"
+           sh "./mvnw  -B -Dmaven.test.failure.ignore -Drat.skip=true -f pom.xml clean package -U"
         } else {
-           bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+           bat(/mvnw.cmd -B -Dmaven.test.failure.ignore -Drat.skip=true clean package/)
         }
         
         currentBuild.result = 'SUCCESS'
@@ -50,8 +50,7 @@ node () {
    stage('Lifecycle Evaluation'){
     // postGitHub commitId, 'pending', 'analysis', 'Nexus Lifecycle Analysis is running'
 
-      /* def policyEvaluationResult = nexusPolicyEvaluation failBuildOnNetworkError: false, iqApplication: '1422', iqStage: 'stage-release', jobCredentialsId: ''
-*/
+      def policyEvaluationResult = nexusPolicyEvaluation failBuildOnNetworkError: false, iqApplication: '1422', iqStage: 'stage-release', jobCredentialsId: ''
     /*  if (currentBuild.result == 'FAILURE'){
         postGitHub commitId, 'failure', 'analysis', 'Nexus Lifecycle Analysis failed',"${policyEvaluationResult.applicationCompositionReportUrl}"
         return
