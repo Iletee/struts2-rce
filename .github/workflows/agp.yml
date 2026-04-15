@@ -1,0 +1,63 @@
+#
+# Sonatype Guide - Agentic Patches Workflow
+# This workflow was automatically created by the Sonatype Guide GitHub App.
+# Learn more: https://guide.sonatype.com
+#
+# Required secrets:
+#   - AGP_GITHUB_TOKEN: GitHub PAT with 'repo' scope (optional, for orgs that restrict GITHUB_TOKEN)
+#   - SONATYPE_DOCKER_USERNAME: Docker registry username
+#   - SONATYPE_DOCKER_PASSWORD: Docker registry password
+#   - ANTHROPIC_API_KEY: Anthropic API key for AI agent
+#   - AGP_API_TOKEN: Sonatype Guide API token
+#
+# Optional variables:
+#   - AGP_API_URL: Sonatype Guide API URL (for run tracking in Guide dashboard)
+#
+
+name: Sonatype Guide - Agentic Patches
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Run mode: full or security'
+        required: false
+        default: 'full'
+      vulnerabilities:
+        description: 'JSON array of vulnerabilities to fix'
+        required: false
+      verbose:
+        description: 'Enable verbose output (may expose sensitive data in logs)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  agp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run AGP
+        uses: sonatype/agp-action@v1
+        with:
+          mode: ${{ inputs.mode }}
+          vulnerabilities: ${{ inputs.vulnerabilities }}
+          create-pr: 'true'
+          dry-run: 'false'
+          verbose: ${{ inputs.verbose }}
+          docker-registry: sonatype.repo.sonatype.app/docker-all
+          docker-username: ${{ secrets.SONATYPE_DOCKER_USERNAME }}
+          docker-password: ${{ secrets.SONATYPE_DOCKER_PASSWORD }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AGP_API_TOKEN: ${{ secrets.AGP_API_TOKEN }}
+          AGP_API_URL: ${{ vars.AGP_API_URL }}
+          # Use custom PAT if provided, otherwise fall back to github.token
+          # Organizations may restrict github.token permissions, requiring a PAT
+          GITHUB_TOKEN: ${{ secrets.AGP_GITHUB_TOKEN || github.token }}
