@@ -4,17 +4,16 @@
 Completely based on https://github.com/piesecurity/apache-struts2-CVE-2017-5638
 
 ### Usage:
-Pre-requisites: have python, docker, maven and a jdk installed
+Pre-requisites: have python, docker 17.03 =>
 
 1. clone this repo
-1. run mvn clean package in project root
 1. run docker build -t hack \.
 1. run docker run -d -p 8080:8080 hack
 1. once container comes online - verify by running in browser
 
-To begin testing RCE - run the exploit.py file. 
+To begin testing RCE - run the exploit.py file.
 
-1. python exploit.py http://myserver:8080/orders/3 "CMD" 
+1. python exploit.py http://myserver:8080/orders/3 "CMD"
 
 Try with different CMDs like
 * pwd - where are we?
@@ -30,7 +29,7 @@ README.txt - Rest Showcase Webapp
 
 Rest Showcase is a simple example of REST app build with the REST plugin.
 
-For more on getting started with Struts, see 
+For more on getting started with Struts, see
 
 * http://cwiki.apache.org/WW/home.html
 
